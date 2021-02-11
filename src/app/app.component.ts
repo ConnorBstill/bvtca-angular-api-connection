@@ -13,6 +13,8 @@ export class AppComponent {
   email: string = '';
   password: string = '';
 
+  carId: number = null;
+
   constructor(private readonly rest: RestService) {}
   title = 'bvtca-angular-api-connection';
 
@@ -23,5 +25,9 @@ export class AppComponent {
       email: this.email,
       password: this.password
     });
+  }
+
+  getCar() {
+    this.rest.getCar(this.carId)
   }
 }

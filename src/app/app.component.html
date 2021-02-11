@@ -323,6 +323,10 @@
   <input [(ngModel)]="password" placeholder="Password" />
 
   <button (click)="register()">Register</button>
+
+  <input [(ngModel)]="carId" type="number" />
+
+  <button (click)="getCar()">Get Car</button>
 </div>
 
 <router-outlet></router-outlet>
