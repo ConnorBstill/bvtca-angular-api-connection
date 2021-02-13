@@ -27,7 +27,15 @@ export class AppComponent {
     });
   }
 
+  logOut() {
+    this.rest.logOut();
+  }
+
   getCar() {
     this.rest.getCar(this.carId)
+  }
+
+  getUserCars() {
+    this.rest.getUserCars()
   }
 }

@@ -317,16 +317,28 @@
 </div>
 
 <div>
-  <input [(ngModel)]="firstName" placeholder="First name" />
-  <input [(ngModel)]="lastName" placeholder="Last Name" />
-  <input [(ngModel)]="email" placeholder="Email" />
-  <input [(ngModel)]="password" placeholder="Password" />
+  <div>
+    <input [(ngModel)]="firstName" placeholder="First name" />
+    <input [(ngModel)]="lastName" placeholder="Last Name" />
+    <input [(ngModel)]="email" placeholder="Email" />
+    <input [(ngModel)]="password" placeholder="Password" />
+  
+    <button (click)="register()">Register</button>
+  </div>
 
-  <button (click)="register()">Register</button>
+  <div>
+    <button (click)="logOut()">Log Out</button>
+  </div>
 
-  <input [(ngModel)]="carId" type="number" />
+  <div>
+    <input [(ngModel)]="carId" type="number" />
+  
+    <button (click)="getCar()">Get car by ID</button>
+  </div>
 
-  <button (click)="getCar()">Get Car</button>
+  <div>
+    <button (click)="getUserCars()">Get cars for current user</button>
+  </div>
 </div>
 
 <router-outlet></router-outlet>

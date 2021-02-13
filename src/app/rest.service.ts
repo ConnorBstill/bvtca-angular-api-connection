@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http'; 
+import { HttpClient } from '@angular/common/http';
 
 import { API_URL } from '../environments/environment';
 
@@ -21,8 +21,8 @@ export class RestService {
       .post(`${API_URL}/register`, body)
       .toPromise()
       .then(res => {
-        localStorage.setItem(this.jwtKey, <string>res)
         console.log('jwt', res)
+        localStorage.setItem(this.jwtKey, <string>res)
       });
   }
 
@@ -34,17 +34,37 @@ export class RestService {
         localStorage.setItem(this.jwtKey, <string>res)
         console.log('jwt', res)
       });
+  }
 
-
+  logOut() {
+    localStorage.removeItem(this.jwtKey);
   }
 
   getCar(id: number) {
     const jwt = localStorage.getItem(this.jwtKey);
+
     this.http
-      .get(`${API_URL}/${id}`, { headers: { Authorization: `Bearer ${jwt}` } })
+      .get(
+        `${API_URL}/${id}`,
+        { headers: { Authorization: `Bearer ${jwt}` } }
+      )
       .toPromise()
       .then(res => {
         console.log('getCar', res)
       })
+  }
+
+  getUserCars() {
+    const jwt = localStorage.getItem(this.jwtKey);
+
+    this.http
+      .get(
+        `${API_URL}/user-cars`,
+        { headers: { Authorization: `Bearer ${jwt}` } }
+      )
+      .toPromise()
+      .then(res => {
+        console.log('getUserCars', res)
+      });
   }
 }
