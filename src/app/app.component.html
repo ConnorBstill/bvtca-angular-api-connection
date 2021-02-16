@@ -331,6 +331,8 @@
   </div>
 
   <div>
+    <div *ngIf="selectedCar.model">{{ selectedCar.model }}</div>
+
     <input [(ngModel)]="carId" type="number" />
   
     <button (click)="getCar()">Get car by ID</button>
@@ -338,6 +340,12 @@
 
   <div>
     <button (click)="getUserCars()">Get cars for current user</button>
+  </div>
+
+  <div *ngFor="let car of userCars">
+    <div>
+      Car Model: {{ car.model }}
+    </div>
   </div>
 </div>
 

@@ -15,6 +15,10 @@ export class AppComponent {
 
   carId: number = null;
 
+  userCars: any[] = [];
+
+  selectedCar: any = {}
+
   constructor(private readonly rest: RestService) {}
   title = 'bvtca-angular-api-connection';
 
@@ -32,10 +36,16 @@ export class AppComponent {
   }
 
   getCar() {
-    this.rest.getCar(this.carId)
+    this.rest.getCar(this.carId).then(res => {
+      this.selectedCar = res;
+      console.log(res)
+    })
   }
 
   getUserCars() {
-    this.rest.getUserCars()
+    this.rest.getUserCars().then(res => {
+      this.userCars = res;
+      console.log('getUserCars', res);
+    });
   }
 }

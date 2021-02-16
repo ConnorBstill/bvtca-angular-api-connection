@@ -20,9 +20,9 @@ export class RestService {
     this.http
       .post(`${API_URL}/register`, body)
       .toPromise()
-      .then(res => {
+      .then((res: string) => {
         console.log('jwt', res)
-        localStorage.setItem(this.jwtKey, <string>res)
+        localStorage.setItem(this.jwtKey, res)
       });
   }
 
@@ -40,31 +40,25 @@ export class RestService {
     localStorage.removeItem(this.jwtKey);
   }
 
-  getCar(id: number) {
+  getCar(id: number): Promise<any> {
     const jwt = localStorage.getItem(this.jwtKey);
 
-    this.http
+    return this.http
       .get(
         `${API_URL}/${id}`,
         { headers: { Authorization: `Bearer ${jwt}` } }
       )
-      .toPromise()
-      .then(res => {
-        console.log('getCar', res)
-      })
+      .toPromise();
   }
 
-  getUserCars() {
+  getUserCars(): Promise<any> {
     const jwt = localStorage.getItem(this.jwtKey);
 
-    this.http
+    return this.http
       .get(
         `${API_URL}/user-cars`,
         { headers: { Authorization: `Bearer ${jwt}` } }
       )
-      .toPromise()
-      .then(res => {
-        console.log('getUserCars', res)
-      });
+      .toPromise();
   }
 }
